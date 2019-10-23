@@ -17,7 +17,7 @@ export default class ResultScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Oba! Vamos plantar {this.state.plantInput}</Text>
+        <Text style={styles.text}>Pode deixar comigo! A partir de agora eu cuido da estufa por você.</Text>
 				<CustomButton
 					title='Mudei de ideia, quero plantar outra coisa!'
 					onPress={() => this.props.navigation.goBack()}
@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    color: '#fff'
+		fontSize: 35,
+		color: '#fff',
+		textAlign: 'center',
+		marginLeft: 10,
+		marginRight: 10,
+		marginBottom: 35
   },
 });

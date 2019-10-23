@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import CustomButton from '../components/CustomButton';
-import getPlantInfo from '../util/firebase';
-import translateInput from '../util/translateInput'
+import getPlantInfo from '../util/getPlantInfo';
+import sendPlantInfo from '../util/sendPlantInfo';
 
 export default class HomeScreen extends React.Component {
 	static navigationOptions = {
@@ -11,8 +11,8 @@ export default class HomeScreen extends React.Component {
 	
 	constructor() {
 		super();
-		state = {
-			plantInput: " "
+		this.state = {
+			plantInput: "",
 		}
 	}
 
@@ -27,9 +27,13 @@ export default class HomeScreen extends React.Component {
         />
         <CustomButton
           title="Plantar!"
-          onPress={ () => {
-						translateInput(this.state.plantInput)
-						// getPlantInfo(this.state.translatedPlantName)
+          onPress={ async () => {
+						if (this.state.plantInput.length) {
+							await sendPlantInfo(await getPlantInfo(this.state.plantInput.toLowerCase()));
+							this.props.navigation.navigate('ResultScreen')
+						} else {
+							Alert.alert('Ah não!', 'Parece que você esqueceu de me dizer o que você vai plantar :(')
+						}
 					} }
         />
       </View>
@@ -45,12 +49,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
+		fontSize: 35,
     color: '#fff'
   },
   plantInput: {
+		fontSize: 20,
 		color: '#fff',
 		textAlign: 'center',
+		borderBottomColor: '#bbb',
+		borderBottomWidth: 1,
 		marginTop: 30,
-    marginBottom: 50
+		marginBottom: 50,
+		paddingLeft: 5,
+		paddingRight: 5
   },
 });

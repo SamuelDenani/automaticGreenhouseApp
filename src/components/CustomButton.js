@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
 	button: {
 		display: 'flex',
 		height: 50,
+		fontSize: 25,
 		paddingLeft: 20,
 		paddingRight: 20,
 		borderRadius: 5,
