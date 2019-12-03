@@ -1,24 +1,26 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Alert } from 'react-native'
 import CustomButton from '../components/CustomButton'
 
-export default class ResultScreen extends React.Component {
+
+export default class HomeScreen extends React.Component {
 
 	static navigationOptions = {
     header: null
 	}
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Pode deixar comigo! A partir de agora eu cuido da estufa por você.</Text>
+	render() {
+		return (
+			<View style={styles.container}>
+				<Text style={styles.text}>Parece que {this.props.navigation.state.params.plantInput} não está cadastrado no meu banco de dados! D:</Text>
+				<Text style={styles.text}>Vou pedir pra minha amiga IA pesquisar pra mim!</Text>
 				<CustomButton
-					title={`Não quero mais plantar ${this.props.navigation.state.params.plantInput}, quero plantar outra coisa!`}
+					title='Vamos plantar alguma outra coisa?'
 					onPress={() => this.props.navigation.goBack()}
 				/>
-      </View>
-    )
-  }
+			</View>
+		)
+	}
 }
 
 const styles = StyleSheet.create({

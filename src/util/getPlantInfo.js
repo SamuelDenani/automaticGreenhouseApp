@@ -1,23 +1,22 @@
 import * as firebase from 'firebase/app'
-import 'firebase/firestore';
-
-let plantInfo;
+import 'firebase/firestore'
 
 let getPlantInfo = async (plantName) => {
- const db = firebase.firestore();
-	let plantRef = db.collection('plants').doc(plantName);
+  let plantInfo = null;
+  const db = firebase.firestore()
+	let plantRef = db.collection('plants').doc(plantName)
 	let getDoc = await plantRef.get()
   .then(doc => {
     if (!doc.exists) {
-      console.log('No such document!');
+      throw false
     } else {
-      plantInfo = doc.data();
+      plantInfo = doc.data()
     }
   })
   .catch(err => {
-    console.log('Error getting document', err);
+    throw err
   });
-  return plantInfo;
+  return plantInfo
 }
 
-export default getPlantInfo;
+export default getPlantInfo

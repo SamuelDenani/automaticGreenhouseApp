@@ -5,17 +5,15 @@
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
-      "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/greenhouse.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#39874d"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -29,6 +27,6 @@
     "android": {
       "package": "com.automatic.greenhouse"
     },
-    "description": ""
+    "description": "An app made for my completion of course work. Uses Firebase Firestore as an example database and Realtime Database for the actual greenhouse to get the user's plant infos and properly grow the plant. //It is my first app so expect a lot of bad practices."
   }
 }
